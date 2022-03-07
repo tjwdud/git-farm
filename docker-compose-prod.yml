@@ -1,0 +1,9 @@
+version: "3"
+services:
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+      args:
+        NODE_ENV: production
+    command: npm run deploy
