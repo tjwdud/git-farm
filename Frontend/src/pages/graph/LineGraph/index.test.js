@@ -2,12 +2,7 @@ import * as React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import LineGraph from "./index";
-
-const mockCommitData = [
-  { name: "1월", commit: 34 },
-  { name: "2월", commit: 18 },
-  { name: "3월", commit: 34 },
-];
+import { mockCommitData } from "../../../../fixtures/graph";
 
 describe("LineGraphContainer 렌더링 확인", () => {
   test("로딩 중일 때", () => {
