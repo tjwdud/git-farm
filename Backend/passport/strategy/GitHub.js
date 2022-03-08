@@ -9,7 +9,7 @@ const { clientID, clientSecret } = keys.GitHub;
 const config = {
   clientID,
   clientSecret,
-  callbackURL: `${keys.backend_domain}/api/auth/github/callback`,
+  callbackURL: `${keys.domain}/api/auth/github/callback`,
 };
 
 export default new GitHubStrategy(

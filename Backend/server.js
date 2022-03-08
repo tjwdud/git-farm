@@ -20,7 +20,7 @@ dotenv.config();
 connectDB();
 app.use(
   cors({
-    origin: keys.frontend_domain,
+    origin: keys.domain,
     credentials: true,
   }),
 );

@@ -4,16 +4,10 @@ import passport from "passport";
 import httpError from "http-errors";
 import createToken from "../../utils/jwt.js";
 import { cookieConfig } from "../../utils/cookie.js";
-import keys from "../../config/keys.js";
 
 const router = express.Router();
 
 export default (app) => {
-  const LOGIN_REDIRECT =
-    keys.NODE_ENV === "production"
-      ? "/loading"
-      : `${keys.frontend_domain}/loading`;
-
   app.use("/auth", router);
 
   router.get(
@@ -35,7 +29,7 @@ export default (app) => {
       const payload = { id, username };
       const token = await createToken(payload);
       res.cookie("token", token, cookieConfig);
-      res.redirect(LOGIN_REDIRECT);
+      res.redirect("/loading");
     },
   );
 
