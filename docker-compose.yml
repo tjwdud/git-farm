@@ -10,6 +10,14 @@ services:
     depends_on:
       - backend
 
+  certbot:
+    image: certbot/certbot
+    command: certonly --webroot --webroot-path=/usr/share/nginx/html/letsencrypt --email ywtechit@gmail.com --agree-tos --no-eff-email -d elice-kdt-sw-1st-team1.elicecoding.com
+    volumes:
+      - ./certbot/conf/:/etc/letsencrypt
+      - ./certbot/logs/:/var/log/letsencrypt
+      - ./certbot/data:/usr/share/nginx/html/letsencrypt
+
   backend:
     build:
       context: ./Backend
