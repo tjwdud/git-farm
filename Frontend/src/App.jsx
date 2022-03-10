@@ -1,9 +1,9 @@
 import React, { Suspense, lazy } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import LoadingModal from "@/components/LoadingModal";
-
 import Header from "./components/Header";
 import Nav from "./components/Nav";
+import RequireAuth from "./components/PrivateRoute";
 // const Header = lazy(() => import("./components/Header"));
 // const Nav = lazy(() => import("./components/Nav"));
 const Login = lazy(() => import("./pages/login"));
@@ -26,7 +26,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/loading" element={<Loading />} />
-          <Route path="/main" element={<Main />} />
+          <Route
+            path="/main"
+            element={
+              <RequireAuth>
+                <Main />
+              </RequireAuth>
+            }
+          />
           <Route path="/calender" element={<MonthlyCalender />} />
           <Route path="/rank" element={<RankPage />} />
           <Route path="/graph" element={<Graph />} />
