@@ -8,7 +8,7 @@ export default async () => {
   try {
     await mongoose.connect(keys.mongoURI);
     //batch jobs
-    schedule.scheduleJob("* * 1 1,4,7,9 *", async () => {
+    schedule.scheduleJob("* * 1 1,4,7,10 *", async () => {
       console.log("Reset totalScore in commit db");
       await Commit.update({}, { $set: { totalScore: 0 } });
     });
