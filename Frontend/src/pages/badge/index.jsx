@@ -1,61 +1,23 @@
-import React, { useLayoutEffect, useMemo, useState } from "react";
-import * as api from "@/api";
+import React, { useMemo } from "react";
 import LoadingModal from "@/components/LoadingModal";
-import { AllBadgesFuncion } from "@/utils/badge";
-import * as BadgeType from "@/utils/badgesIcon";
+import { userBadgesTurnTrue } from "@/utils/badge";
+
 import { Navigate } from "react-router-dom";
 import SeedIcon from "../../assets/icon/header/seeds.svg";
 import * as Badges from "./style";
 import Lock from "../../assets/icon/lock.svg";
 import { useAuth } from "../../contexts/auth";
+import useUserBadges from "../../hooks/useUserBadges";
 
 function Badge() {
   const { isLogin } = useAuth();
-  const [loading, setLoading] = useState(false);
-  const [userBadges, setUserBadges] = useState([]);
-
-  const getUserBadges = async () => {
-    setLoading(true);
-    const [badgeData, mypageData, rankData] = await Promise.allSettled([
-      api.getUserBadges(),
-      api.getMyInfo(),
-      api.getRank(),
-    ]);
-    const { newUserBadges, newBadges } = await AllBadgesFuncion(
-      badgeData.value.badge,
-      mypageData.value.mypage,
-      rankData.value.data,
-    );
-
-    if (newBadges.length !== 0) {
-      api.postBadges(newUserBadges);
-    }
-
-    setUserBadges(newUserBadges);
-    setLoading(false);
-  };
-
-  const userBadgesTurnTrue = () => {
-    const newBadges = BadgeType.badgesType.map((badges) => {
-      if (userBadges[badges.id] === true) {
-        return { ...badges, userHaveBadge: true };
-      }
-      return badges;
-    });
-    return newBadges;
-  };
-
-  useLayoutEffect(() => {
-    if (isLogin) {
-      getUserBadges();
-    }
-  }, []);
+  const { loading, userBadges } = useUserBadges();
 
   if (!isLogin) {
     return <Navigate to="/" />;
   }
 
-  const trueBadge = useMemo(() => userBadgesTurnTrue(), [userBadges]);
+  const trueBadge = useMemo(() => userBadgesTurnTrue(userBadges), [userBadges]);
   return (
     <Badges.Container>
       <Badges.IconWrapper>
@@ -66,7 +28,7 @@ function Badge() {
         {!loading ? (
           trueBadge.map((badge) => (
             <Badges.PerBadge key={`${badge.id}-${badge.title}`}>
-              {badge.userHaveBadge ? badge.icon : <Lock />}
+              {badge.userHaveBadge ? <badge.icon /> : <Lock />}
               <p>{badge.title}</p>
             </Badges.PerBadge>
           ))
