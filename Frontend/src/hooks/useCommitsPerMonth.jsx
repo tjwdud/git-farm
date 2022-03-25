@@ -41,6 +41,10 @@ function useCommitsPerMonth() {
     if (isLogin) {
       getCommitsPerMonth();
     }
+    return () => {
+      setCommitData([]);
+      setLoading(false);
+    };
   }, []);
 
   return [commitData, commitsLoading];
