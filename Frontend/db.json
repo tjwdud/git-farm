@@ -19,8 +19,8 @@
   "mypage": {
     "success": true,
     "mypage": {
-      "total": 1234,
-      "totalScore": 1702,
+      "total": 5001,
+      "totalScore": 5001,
       "continuous": 31,
       "memberDate": 77
     }
@@ -159,15 +159,31 @@
     ]
   },
   "badge": {
-    "badge": "[true,true,true,true,false,false,true,true,true,true,true,true,true,true,true,false,false,false]"
+    "badge": [
+      true,
+      true,
+      true,
+      true,
+      false,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ]
   },
   "goal": {
     "success": true,
-    "goal": "23"
+    "goal": 13
   },
   "resolution": {
     "success": true,
-    "resolution": "개발자가 되기 위해서어쩌구저꺼주어쩌궇"
+    "resolution": "개발자가 되기어쩌궇"
   },
   "recentThreeYear": {
     "success": true,
