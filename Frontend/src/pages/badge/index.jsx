@@ -11,12 +11,12 @@ import useUserBadges from "../../hooks/useUserBadges";
 
 function Badge() {
   const { isLogin } = useAuth();
-  const { loading, userBadges } = useUserBadges();
+  const { isFetching, userBadges, gainedBadges } = useUserBadges();
 
   if (!isLogin) {
     return <Navigate to="/" />;
   }
-
+  console.log("베지페이지", userBadges, gainedBadges);
   const trueBadge = useMemo(() => userBadgesTurnTrue(userBadges), [userBadges]);
   return (
     <Badges.Container>
@@ -25,7 +25,7 @@ function Badge() {
       </Badges.IconWrapper>
       <Badges.Text>열심히 커밋 하여 다양한 배지를 모아보세요!</Badges.Text>
       <Badges.BadgeCollections>
-        {!loading ? (
+        {!isFetching ? (
           trueBadge.map((badge) => (
             <Badges.PerBadge key={`${badge.id}-${badge.title}`}>
               {badge.userHaveBadge ? <badge.icon /> : <Lock />}
