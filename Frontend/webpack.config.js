@@ -61,6 +61,7 @@ module.exports = {
     new InjectManifest({
       swSrc: "./public/service-worker.js", // service-worker file location before build
       swDest: "service-worker.js", //  service-worker file location after build(default: dist/)
+      maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
     }),
     new CopyPlugin({
       patterns: [
@@ -77,7 +78,8 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       "process.env": {
-        MODE: JSON.stringify("development"),
+        MODE: JSON.stringify("mock"),
+        SERVER_URL: JSON.stringify("http://localhost:7777"),
       },
     }),
   ],

@@ -1,46 +1,26 @@
 import { useState, useEffect } from "react";
-import * as api from "@/api";
-import { AllBadgesFuncion } from "@/utils/badge";
-import { useAuth } from "../contexts/auth";
+import { useBadgeQuery } from "@/queries/badges";
+// import { useAuth } from "../contexts/auth";
 
 function useUserBadges() {
-  const { isLogin } = useAuth();
-  const [loading, setLoading] = useState(false);
   const [userBadges, setUserBadges] = useState([]);
+  const [gainedBadges, setGainedBadges] = useState([]);
+  const { data, isFetching } = useBadgeQuery();
 
-  const getUserBadges = async () => {
-    setLoading(true);
+  console.log("useUserBadges 훅안 data", data);
 
-    const [badgeData, mypageData, rankData] = await Promise.allSettled([
-      api.getUserBadges(),
-      api.getMyInfo(),
-      api.getRank(),
-    ]).then((results) =>
-      results.map((result) =>
-        result.status === "fulfilled" ? result.value : [],
-      ),
-    );
-    if (badgeData.length !== 0) {
-      const { newUserBadges, newBadges } = await AllBadgesFuncion(
-        badgeData.badge,
-        mypageData.mypage,
-        rankData.data,
-      );
-
-      if (newBadges.length !== 0) {
-        api.postBadges(newUserBadges);
-      }
-
+  const getUserBadges = () => {
+    if (!isFetching) {
+      const { newUserBadges, newBadges } = data;
       setUserBadges(newUserBadges);
+      setGainedBadges(newBadges);
     }
-    setLoading(false);
   };
+
   useEffect(() => {
-    if (isLogin) {
-      getUserBadges();
-    }
-  }, []);
-  return { loading, userBadges };
+    getUserBadges();
+  });
+  return { isFetching, userBadges, gainedBadges };
 }
 
 export default useUserBadges;

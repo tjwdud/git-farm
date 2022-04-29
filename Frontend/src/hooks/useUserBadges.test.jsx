@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
 import { waitFor } from "@testing-library/react";
 import * as api from "@/api";
-import { AllBadgesFuncion } from "@/utils/badge";
+import { obtainBadge } from "@/utils/badge";
 import useUserBadges from "./useUserBadges";
 import { wrapper } from "../../tests/mockUseContext";
 import { mockUserBadgesData } from "../../fixtures/badge";
@@ -21,7 +21,7 @@ describe("Test for `useUserBadges`", () => {
     const { result } = renderHook(() => useUserBadges(), {
       wrapper,
     });
-    const { newUserBadges } = await AllBadgesFuncion(
+    const { newUserBadges } = await obtainBadge(
       mockUserBadgesData.badge,
       mockMyInfoData.mypage,
       mockRankData.data,
