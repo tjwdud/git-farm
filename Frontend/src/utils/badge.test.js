@@ -195,8 +195,8 @@ describe("AllBadgesFunction", () => {
         false,
       ],
     };
-    expect(
-      await badge.AllBadgesFuncion(userBadges, mypageData, rankData),
-    ).toEqual(expected);
+    expect(await badge.obtainBadge(userBadges, mypageData, rankData)).toEqual(
+      expected,
+    );
   });
 });

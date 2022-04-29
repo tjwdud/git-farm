@@ -80,7 +80,10 @@ export const level = (score, userBadges, arrayOfBadgesId) => {
   return arrayOfBadgesId;
 };
 
-export const AllBadgesFuncion = async (userBadges, mypageData, rankData) => {
+export const obtainBadge = (data) => {
+  const [{ badge: userBadges }, { mypage: mypageData }, { data: rankData }] =
+    data;
+  console.log("obtainBadge유틸함수", userBadges);
   const newBadges = [];
   const { myRank } = rankData;
   const newUserBadges = userBadges;
