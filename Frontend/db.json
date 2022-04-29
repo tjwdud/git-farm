@@ -19,8 +19,8 @@
   "mypage": {
     "success": true,
     "mypage": {
-      "total": 5001,
-      "totalScore": 5001,
+      "total": 1234,
+      "totalScore": 1702,
       "continuous": 31,
       "memberDate": 77
     }
@@ -29,139 +29,42 @@
     {
       "id": 2018,
       "success": true,
-      "commitEachMonth": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
+      "commitEachMonth": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": 2019,
       "success": true,
-      "commitEachMonth": [
-        0,
-        182,
-        43,
-        3,
-        399,
-        115,
-        21,
-        32,
-        66,
-        81,
-        236,
-        10,
-        28
-      ]
+      "commitEachMonth": [0, 182, 43, 3, 399, 115, 21, 32, 66, 81, 236, 10, 28]
     },
     {
       "id": 2020,
       "success": true,
       "commitEachMonth": [
-        0,
-        82,
-        143,
-        73,
-        99,
-        135,
-        151,
-        84,
-        166,
-        108,
-        66,
-        60,
-        28
+        0, 82, 143, 73, 99, 135, 151, 84, 166, 108, 66, 60, 28
       ]
     },
     {
       "id": 2021,
       "success": true,
-      "commitEachMonth": [
-        0,
-        2,
-        3,
-        3,
-        9,
-        35,
-        151,
-        84,
-        16,
-        8,
-        66,
-        0,
-        8
-      ]
+      "commitEachMonth": [0, 2, 3, 3, 9, 35, 151, 84, 16, 8, 66, 0, 8]
     },
     {
       "id": 2022,
       "success": true,
-      "commitEachMonth": [
-        0,
-        34,
-        18,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
+      "commitEachMonth": [0, 34, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     }
   ],
   "perMonth": {
     "success": true,
     "commitEachDay": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      2,
-      10,
-      11,
-      12,
-      13,
-      0,
-      30,
-      16,
-      17,
-      18,
-      19,
-      20,
-      21,
-      10,
-      2,
-      57,
-      5,
-      4,
-      7,
-      2,
-      29,
-      30,
-      31
+      1, 2, 3, 4, 5, 6, 7, 8, 2, 10, 11, 12, 13, 0, 30, 16, 17, 18, 19, 20, 21,
+      10, 2, 57, 5, 4, 7, 2, 29, 30, 31
     ]
   },
   "badge": {
     "badge": [
-      true,
-      true,
+      false,
+      false,
       true,
       true,
       false,
@@ -179,27 +82,18 @@
   },
   "goal": {
     "success": true,
-    "goal": 13
+    "goal": "23"
   },
   "resolution": {
     "success": true,
-    "resolution": "개발자가 되기어쩌궇"
+    "resolution": "개발자가 되기 위해서어쩌구저꺼주어쩌궇"
   },
   "recentThreeYear": {
     "success": true,
     "lastThreeYear": [
-      [
-        2020,
-        49
-      ],
-      [
-        2021,
-        1163
-      ],
-      [
-        2022,
-        127
-      ]
+      [2020, 49],
+      [2021, 1163],
+      [2022, 127]
     ]
   },
   "reposLanguage": {
