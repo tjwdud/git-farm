@@ -83,7 +83,8 @@ export const getUserBadges = async () => {
 export const postBadges = async (badges) => {
   try {
     const res = await AXIOS.post(badgesURL, {
-      badge: `[${badges}]`,
+      // badge: `[${badges}]`,
+      badge: badges,
     });
     return res;
   } catch (error) {
