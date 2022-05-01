@@ -11,7 +11,7 @@ import useUserBadges from "../../hooks/useUserBadges";
 
 function Badge() {
   const { isLogin } = useAuth();
-  const { isFetching, userBadges, gainedBadges } = useUserBadges();
+  const { isLoading, userBadges, gainedBadges } = useUserBadges();
 
   if (!isLogin) {
     return <Navigate to="/" />;
@@ -25,7 +25,7 @@ function Badge() {
       </Badges.IconWrapper>
       <Badges.Text>열심히 커밋 하여 다양한 배지를 모아보세요!</Badges.Text>
       <Badges.BadgeCollections>
-        {!isFetching ? (
+        {!isLoading ? (
           trueBadge.map((badge) => (
             <Badges.PerBadge key={`${badge.id}-${badge.title}`}>
               {badge.userHaveBadge ? <badge.icon /> : <Lock />}
