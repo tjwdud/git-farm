@@ -10,16 +10,29 @@ export const Wrapper = styled.div`
     width: 60px;
     margin-bottom: 20px;
   }
+`;
+
+export const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 35px;
   p {
+    color: ${(props) => props.theme.lightGray};
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  & > :nth-child(4) {
+    font-size: 15px;
+
+    margin: 15px 0;
     text-align: center;
-    margin-bottom: 20px;
-    margin-left: 0px;
   }
 `;
 
-export const Body = styled.p`
+export const ModalDescription = styled.div`
   color: ${(props) => props.theme.lightGray};
-  line-height: 18px;
-  font-size: 16px;
-  margin-left: 5px;
+  font-size: 15px;
+  font-color: red;
 `;
