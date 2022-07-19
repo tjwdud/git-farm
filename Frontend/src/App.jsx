@@ -4,7 +4,8 @@ import LoadingModal from "@/components/LoadingModal";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
 import { AuthProvider } from "./contexts/auth";
-
+import useCollectedBadgeModal from "./hooks/useCollectedBadgeModal";
+import CollectedBadgeModal from "./components/CollectedBadgeModal";
 // const Header = lazy(() => import("./components/Header"));
 // const Nav = lazy(() => import("./components/Nav"));
 const Login = lazy(() => import("./pages/login"));
@@ -19,12 +20,22 @@ const GoalSetting = lazy(() => import("./pages/goalSetting"));
 const Badge = lazy(() => import("./pages/badge"));
 
 function App() {
+  const { setOpenModal, openBadgeModal, gainedBadges } =
+    useCollectedBadgeModal();
+
+  const gained = gainedBadges;
   return (
     <AuthProvider>
       <BrowserRouter>
         <Header />
         <Nav />
         <Suspense fallback={<LoadingModal />}>
+          {openBadgeModal && (
+            <CollectedBadgeModal
+              setOpenModal={setOpenModal}
+              gainedBadges={gained}
+            />
+          )}
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/loading" element={<Loading />} />
